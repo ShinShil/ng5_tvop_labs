@@ -1,0 +1,8 @@
+<mat-toolbar color="primary" fxLayout fxLayoutAlign="space-between center" fxLayoutGap="10px">
+    <div fxLayout="row">
+        <div>TVOP</div>
+        <button mat-button color="secondary" (click)="sidenav.toggle()">Lab 1</button>
+    </div>
+    <lab-error-display [(ngModel)]="display" (click)="updateDisplay()"></lab-error-display>
+</mat-toolbar>
+<lab1></lab1>

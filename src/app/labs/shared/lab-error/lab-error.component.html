@@ -1,0 +1,24 @@
+<div style="padding: 0 24px">
+    <h3 class="title" fxLayout="row" fxLayoutAlign="space-between start">
+        <span>
+            <span *ngIf="titleIndex">{{titleIndex}}. </span>
+            <span>{{error.title}}</span>
+        </span>
+        <lab-error-display [(ngModel)]="display"></lab-error-display>
+    </h3>
+    <mat-card-content>
+        <p class="description" *ngIf="display.description">
+            <span *ngIf="typeof(error.description)==='string'; else descriptionArrTemplate">{{error.description}}</span>
+            <ng-template #descriptionArrTemplate>
+                <span style="display: block" *ngFor="let descriptionItem of error.description; let i = index">
+                    {{i}}. {{descriptionItem}}
+                </span>
+            </ng-template>
+        </p>
+        <p class="steps" *ngIf="display.steps">
+            <span style="display: block" *ngFor="let step of error.steps; let i = index">
+                Шаг {{i + 1}}. {{step}}
+            </span>
+        </p>
+    </mat-card-content>
+</div>
