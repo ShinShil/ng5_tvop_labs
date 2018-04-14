@@ -3,7 +3,18 @@ import { clone } from 'lodash';
 
 @Component({
     selector: 'lab-error',
-    templateUrl: 'lab-error.component.html'
+    templateUrl: 'lab-error.component.html',
+    styles: [
+        `
+            .description {
+                font-size: 16px;
+            }
+
+            .steps {
+                font-size: 16px;
+            }
+        `
+    ]
 })
 export class LabErrorComponent implements OnInit, OnChanges {
     @Input() error: ILabError;

@@ -23,7 +23,6 @@ export class LabErrorDisplayComponent implements OnInit, ControlValueAccessor {
     }
 
     @Input() public set value(value: ILabErrorDisplay) {
-        console.log('before set value');
         this.writeValue(value);
         this.onChangeEvents.forEach(event => event(value));
     }
@@ -33,7 +32,7 @@ export class LabErrorDisplayComponent implements OnInit, ControlValueAccessor {
             this.value = {
                 images: true,
                 description: true,
-                steps: true
+                steps: true,                
             }
         }
     }

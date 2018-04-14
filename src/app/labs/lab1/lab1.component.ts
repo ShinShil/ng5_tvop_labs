@@ -3,6 +3,8 @@ import { ADDER_ERRORS } from './adder.constant';
 import { clone } from 'lodash';
 import { LabErrorDisplayService } from '../shared/error-display/lab-error-display.service';
 import { CUBE_ERRORS } from './cube.constant';
+import { CHESS1_ERRORS } from './chess1.constant';
+import { CHESS2_ERRORS } from './chess2.constant';
 
 @Component({
     selector: 'lab1',
@@ -10,7 +12,7 @@ import { CUBE_ERRORS } from './cube.constant';
 })
 export class Lab1Component implements OnInit {
     public errors: ILabError[] = [];
-    public display: ILabErrorDisplay
+    public display: ILabErrorDisplay;
 
     private applications = [
         {
@@ -20,6 +22,14 @@ export class Lab1Component implements OnInit {
         {
             displayValue: 'Cube',
             value: CUBE_ERRORS
+        },
+        {
+            displayValue: 'Chess 1',
+            value: CHESS1_ERRORS
+        },
+        {
+            displayValue: 'Chess 2',
+            value: CHESS2_ERRORS
         }]
 
     constructor(private displayService: LabErrorDisplayService) {

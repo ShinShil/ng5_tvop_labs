@@ -15,6 +15,10 @@
                 </span>
             </ng-template>
         </p>
+        <p class="images" *ngIf="display.images">
+            <img *ngFor="let img of error.images" [src]="img"/>
+        </p>
+        <h4 *ngIf="display.steps && error.steps.length > 0">Воспроизведение ошибки</h4>
         <p class="steps" *ngIf="display.steps">
             <span style="display: block" *ngFor="let step of error.steps; let i = index">
                 Шаг {{i + 1}}. {{step}}

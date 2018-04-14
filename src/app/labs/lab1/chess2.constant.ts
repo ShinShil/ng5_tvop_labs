@@ -1,0 +1,1 @@
+export const CHESS2_ERRORS: ILabError[] = []

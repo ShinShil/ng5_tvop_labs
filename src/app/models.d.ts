@@ -9,4 +9,6 @@ interface ILabErrorDisplay {
     description?: boolean;
     steps?: boolean;
     images?: boolean;
+    fix?: string;
+    important?: number;
 }

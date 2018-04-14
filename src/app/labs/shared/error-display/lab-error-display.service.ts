@@ -6,8 +6,9 @@ export class LabErrorDisplayService {
 
     public getDefaultDisplay(): ILabErrorDisplay {
         return {
-            description: false,
-            steps: false
+            description: true,
+            steps: false,
+            images: true
         }
     }
 
