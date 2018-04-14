@@ -68,8 +68,7 @@ export const CHESS1_ERRORS: ILabError[] = [
         ],
         images: [
             'assets/img/chess1_2_1.png',
-            'assets/img/chess1_2_2.png',
-            'assets/img/chess1_2_3.png',
+            'assets/img/chess1_2_2.png'
         ]
     },
     {
@@ -85,7 +84,7 @@ export const CHESS1_ERRORS: ILabError[] = [
             'Компьютер сделает другой ход'
         ],
         images: [
-            'chess1_3_1.png'
+            'assets/img/chess1_3_1.png'
         ]
     },
     {
@@ -97,7 +96,7 @@ export const CHESS1_ERRORS: ILabError[] = [
             'Пункт меню "Game"->"Stop" заблокирован'
         ],
         images: [
-            'chess1_4_1.png'
+            'assets/img/chess1_4_1.png'
         ]
     },
     {
@@ -108,7 +107,7 @@ export const CHESS1_ERRORS: ILabError[] = [
             'В левом нижнем углу видны проценты'
         ],
         images: [
-            'chess1_5_1.png'
+            'assets/img/chess1_5_1.png'
         ]
     },
     {
@@ -122,7 +121,7 @@ export const CHESS1_ERRORS: ILabError[] = [
             'Шашка не выделилась'
         ],
         images: [
-            'chess1_6_1.png'
+            'assets/img/chess1_6_1.png'
         ]
     },
     {
@@ -134,8 +133,8 @@ export const CHESS1_ERRORS: ILabError[] = [
             'Открылась editor panel'           
         ],
         images: [
-            'chess1_7_1.png',
-            'chess1_7_2.png'
+            'assets/img/chess1_7_1.png',
+            'assets/img/chess1_7_2.png'
         ]
     },
     {
@@ -145,7 +144,7 @@ export const CHESS1_ERRORS: ILabError[] = [
             startProgamm
         ],
         images: [
-            'chess1_8_1.png'
+            'assets/img/chess1_8_1.png'
         ]
     },
     {
@@ -155,7 +154,7 @@ export const CHESS1_ERRORS: ILabError[] = [
             startProgamm
         ],
         images: [
-            'chess1_9_1.png'
+            'assets/img/chess1_9_1.png'
         ]
     },
     {
@@ -169,8 +168,8 @@ export const CHESS1_ERRORS: ILabError[] = [
             'В правилах нету картинки, демонструющей шашку'
         ],
         images: [
-            'chess1_10_1.png',
-            'chess1_10_2.png'
+            'assets/img/chess1_10_1.png',
+            'assets/img/chess1_10_2.png'
         ]
     }
 ]
