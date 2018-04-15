@@ -5,6 +5,7 @@ import { LabErrorDisplayService } from '../shared/error-display/lab-error-displa
 import { CUBE_ERRORS } from './cube.constant';
 import { CHESS1_ERRORS } from './chess1.constant';
 import { CHESS2_ERRORS } from './chess2.constant';
+import { TETRIS } from './tetris.constat';
 
 @Component({
     selector: 'lab1',
@@ -30,7 +31,11 @@ export class Lab1Component implements OnInit {
         {
             displayValue: 'Chess 2',
             value: CHESS2_ERRORS
-        }]
+        },
+        {
+            displayValue: 'Tetris',
+            value: TETRIS
+        }];
 
     constructor(private displayService: LabErrorDisplayService) {
         this.errors = ADDER_ERRORS;
