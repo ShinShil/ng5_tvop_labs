@@ -15,7 +15,7 @@ export class Lab1Component implements OnInit {
     public errors: ILabError[] = [];
     public display: ILabErrorDisplay;
 
-    private applications = [
+    public applications = [
         {
             displayValue: 'Adder',
             value: ADDER_ERRORS
