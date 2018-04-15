@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { clone } from 'lodash';
+import { WordErrorService } from '../word-error/word-error.service';
 
 @Component({
     selector: 'lab-error',
@@ -21,7 +22,7 @@ export class LabErrorComponent implements OnInit, OnChanges {
     @Input() display: ILabErrorDisplay;
     @Input() titleIndex: number;
 
-    constructor() { }
+    constructor(private wordErrorService: WordErrorService) { }
 
     ngOnInit() { 
         this.display = clone(this.display);
@@ -33,5 +34,10 @@ export class LabErrorComponent implements OnInit, OnChanges {
 
     public typeof(val) {
         return typeof(val);
+    }
+
+
+    public goToReport(header: IErrorHeader, error: ILabError) {
+        this.wordErrorService.navigateToError(header, error);
     }
 }

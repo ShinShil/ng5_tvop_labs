@@ -6,7 +6,7 @@ interface ILabError {
     fix?: string;
     importance?: number;
     type?: number;
-    repeatable: boolean;
+    repeatable?: boolean;
 }
 
 interface ILabErrorDisplay {

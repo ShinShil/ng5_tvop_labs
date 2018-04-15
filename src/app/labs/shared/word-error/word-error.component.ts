@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WordErrorService } from './word-error.service';
 
 @Component({
     selector: 'word-error',
@@ -6,13 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['word-error.component.scss']
 })
 export class WordErrorComponent implements OnInit {
-    @Input() public header: IErrorHeader;
-    @Input() public error: ILabError;
+    public header: IErrorHeader;
+    public error: ILabError;
 
-    constructor() { }
+    constructor(
+        private wordErrorService: WordErrorService
+    ) { }
 
     ngOnInit() { 
-
+        this.header = this.wordErrorService.header;
+        this.error = this.wordErrorService.error; 
     }
 
 }
