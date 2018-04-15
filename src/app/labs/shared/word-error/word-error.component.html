@@ -1,4 +1,4 @@
-<div class="header" *ngIf="header">
+<div class="header block" *ngIf="header">
     <div class="col">
         <div>Название компании</div>
         <div>Конфидициально</div>
@@ -16,7 +16,7 @@
         <div *ngIf="header.releaseVersion">{{ header.releaseVersion }}</div>
     </div>
 </div>
-<div class="report-type" *ngIf="error.type">
+<div class="report-type block" *ngIf="error.type">
     <div>Тип отчёта(1-6): {{ error.type }}</div>
     <div class="col">
         <div>1 - Ошибка кодирования</div>
@@ -29,21 +29,25 @@
         <div>6 - вопрос</div>
     </div>
 </div>
-<div class="report-importance" *ngIf="error.importance">
+<div class="report-importance block" *ngIf="error.importance">
     <div>Степень важности: {{ error.importance }}</div>
     <div>1 - Фaтальная</div>
     <div>2 - Серьёзная</div>
     <div>3 - Незначительная</div>
 </div>
-<div class="problem">
+<div class="attachments block">
+    <span class="upper">Приложения (Д/Н). {{ error.images ? 'Д' : 'Н' }} </span>
+    <img *ngFor="let image of error.images" [src]="image" />
+</div>
+<div class="problem block">
     <span class="upper" *ngIf="error.title">Проблема</span>
     <span>{{ error.title }}</span>
 </div>
-<div class="repeatable" *ngIf="header.repeatable">
+<div class="repeatable block" *ngIf="header && header.repeatable">
     <span class="upper">Можете ли вы воспроизвести проблемную ситуацию? (Д/Н)</span>
     <span>{{ header.repeatable ? 'Yes' : 'No'}}</span>
 </div>
-<div class="description">
+<div class="description block">
     <span class="upper">Подробное описание проблемы и как её воспроизвести</span>
     <div class="desc" *ngIf="error.description">
         <div>Описание проблемы</div>
@@ -58,7 +62,7 @@
     <div class="fix">
         <span class="upper">Предлагаемое исправление(Необязательно)</span>
     </div>
-    <div class="footer">
+    <div class="footer block" *ngIf="header">
         <span class="header">Отчёт предоставлен сотрудником </span>
         <span *ngIf="header.workerName">{{ header.workerName }}</span>
         <span>Дата</span>

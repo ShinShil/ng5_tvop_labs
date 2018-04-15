@@ -11,6 +11,7 @@ export class WordErrorService {
     public navigateToError(header: IErrorHeader, error: ILabError): void {
         this.header = header;
         this.error = error;
+        console.log(this.error);
         this.router.navigate(['/','word-error']);
     }
 }
