@@ -130,7 +130,7 @@ export const CHESS1_ERRORS: ILabError[] = [
         steps: [
             startProgamm,
             selectMenu(['Options', 'Editor panel']),
-            'Открылась editor panel'           
+            'Открылась editor panel'
         ],
         images: [
             'assets/img/chess1_7_1.png',
@@ -170,6 +170,48 @@ export const CHESS1_ERRORS: ILabError[] = [
         images: [
             'assets/img/chess1_10_1.png',
             'assets/img/chess1_10_2.png'
+        ]
+    },
+    {
+        title: 'Не работающая кнопка "History" в диалоге "Draughts"',
+        description: 'В диалоге "About..." есть кнопка "History", при нажатии на неё ниего не происходит',
+        steps: [
+            startProgamm,
+            selectMenu(['Help', 'About']),
+            'Появится диалог "About..."',
+            'Нажмите любое количество раз меньшее 10 на кнопку "History"',
+            'Ничего не происходит'
+        ],
+        images: [
+            'assets/img/chess1_11_1.png',
+            'assets/img/chess1_11_2.png'
+        ]
+    },
+    {
+        title: 'Ссылка ведущая на поламанную страницу в диалоге "About"',
+        description: 'В диалоге "About..." есть ccылка, которая ведёт на поломанную страницу',
+        steps: [
+            'Если на компьютере нету браузера, то установите его на свой компьютер',
+            startProgamm,
+            selectMenu(['Help', 'About']),
+            'Появится диалог "About..."',
+            'Нажмите на ссылку HomePage : shra.web.ur.ru',
+            'В браузере откроется страница с адресом http://shra.web.ur.ru/',
+            'На странице выведены символы'
+        ],
+        images: [
+            'assets/img/chess1_12_1.png',
+            'assets/img/chess1_12_2.png'
+        ]
+    },
+    {
+        title: 'Не очевидность управления',
+        description: 'Интерфейс игры может быть сложен для неподготоваленного пользователя, чтобы разобраться с приложением необходимо прочитать help, следует при запуске программы указывать на него',
+        steps: [
+            startProgamm,
+        ],
+        images: [
+            'assets/img/chess1_13_1.png'
         ]
     }
 ]
