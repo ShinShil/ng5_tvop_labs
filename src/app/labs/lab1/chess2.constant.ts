@@ -229,7 +229,7 @@ export const CHESS2_ERRORS: ILabError[] = [
         ],
         images: [
             getImage('chess2_13_1.png'),
-            getImage('chess2_14_1.png'),
+            getImage('chess2_13_2.png'),
         ]
     }
 ]
