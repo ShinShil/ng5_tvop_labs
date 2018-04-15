@@ -1,0 +1,14 @@
+export const ERROR_TYPE = {
+    CODING: 1,
+    PROJECTING: 2,
+    PROPOSAL: 3,
+    DOCUMENTATION_DIVERGENCE: 4,
+    HARDWARE_PROBLEM: 5,
+    QUESTION: 6
+};
+
+export const IMPORTANCE_TYPE = {
+    FATAL: 1,
+    SERIOUS: 2,
+    MINOR: 3
+};

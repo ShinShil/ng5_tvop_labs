@@ -25,6 +25,7 @@ import { LabErrorDisplayComponent } from './labs/shared/error-display/lab-error-
 import { LabErrorDisplayService } from './labs/shared/error-display/lab-error-display.service';
 import { LabErrorComponent } from './labs/shared/lab-error/lab-error.component';
 import { Lab2Component } from './labs/lab2/lab2.component';
+import { WordErrorComponent } from './labs/shared/word-error/word-error.component';
 
 const ROUTES: Routes = [
   { redirectTo: 'lab1', path: '', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const ROUTES: Routes = [
     AppComponent,
     Lab1Component,
     Lab2Component,
+    WordErrorComponent,
     LabErrorComponent,
     LabErrorDisplayComponent
   ],

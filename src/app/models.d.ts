@@ -3,12 +3,25 @@ interface ILabError {
     title: string;
     images?: string[];
     steps?: string[];
+    fix?: string;
+    importance?: number;
+    type?: number;
+    repeatable: boolean;
 }
 
 interface ILabErrorDisplay {
     description?: boolean;
     steps?: boolean;
     images?: boolean;
-    fix?: string;
-    important?: number;
+}
+
+interface IErrorHeader {
+    companyName: string;
+    confidence: string;
+    reportIndex: number;
+    appName: string;
+    releaseDate: string;
+    releaseVersion: string;
+    workerName: string;
+    createdAt: string;
 }

@@ -1,0 +1,66 @@
+<div class="header">
+    <div class="col">
+        <div>Название компании</div>
+        <div>Конфидициально</div>
+        <div>Отчёт о проблеме №</div>
+        <div>Программа</div>
+        <div>Выпуск</div>
+        <div>Версия</div>
+    </div>
+    <div class="col">
+        <div>{{ header.companyName }}</div>
+        <div>{{ header.confidence }}</div>
+        <div>{{ header.reportIndex }}</div>
+        <div>{{ header.appName }}</div>
+        <div>{{ header.releaseDate }}</div>
+        <div>{{ header.releaseVersion }}</div>
+    </div>
+</div>
+<div class="report-type">
+    <div>Тип отчёта(1-6): {{ error.type }}</div>
+    <div class="col">
+        <div>1 - Ошибка кодирования</div>
+        <div>3 - Предложение</div>
+        <div>5 - Взаимодйствие с аппаратурой</div>
+    </div>
+    <div class="col">
+        <div>2 - Ошибка проектирования</div>
+        <div>4 - расхождение с документацией</div>
+        <div>6 - вопрос</div>
+    </div>
+</div>
+<div class="report-importance">
+    <div>Степень важности: {{ error.importance }}</div>
+    <div>1 - Фaтальная</div>
+    <div>2 - Серьёзная</div>
+    <div>3 - Незначительная</div>
+</div>
+<div class="problem">
+    <span class="upper">Проблема</span>
+    <span>{{ error.title }}</span>
+</div>
+<div class="repeatable">
+    <span class="upper">Можете ли вы воспроизвести проблемную ситуацию? (Д/Н)</span>
+    <span>{{ header.repeatable ? 'Yes' : 'No'}}</span>
+</div>
+<div class="description">
+    <span class="upper">Подробное описание проблемы и как её воспроизвести</span>
+    <div class="desc" *ngIf="error.descrption">
+        <div>Описание проблемы</div>
+        <div class="indent">{{ error.description }}</div>
+        <div>Воспроизведение проблемы</div>
+        <div class="indent">
+            <div class="step" *ngFor="let step of error.steps; let i = index">
+                Шаг {{ i }}. {{ step }}
+            </div>
+        </div>
+</div>
+<div class="fix">
+    <span class="upper">Предлагаемое исправление(Необязательно)</span>
+</div>
+<div class="footer">
+    <span class="header">Отчёт предоставлен сотрудником </span>
+    <span>{{ header.workerName }}</span>
+    <span>Дата</span>
+    <span>{{ header.createdAt }}</span>
+</div>
