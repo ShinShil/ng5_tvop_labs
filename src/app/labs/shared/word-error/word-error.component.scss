@@ -1,6 +1,33 @@
+@media print {
+    div, span {
+        font-size: 14px !important;
+    }
+
+    .header .small {
+        width: 25% !important;
+    }
+}
+
+.frm {
+    margin-left: 40px;
+}
+
 div, span {
-    font-size: 14px;
     font-family: 'Times New Roman', Times, serif
+}
+
+.header .small {
+    width: 17%;
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.col {
+    width: 49%;
+    display: inline-block;
 }
 
 .upper {

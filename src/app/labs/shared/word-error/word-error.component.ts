@@ -17,6 +17,11 @@ export class WordErrorComponent implements OnInit {
     ngOnInit() { 
         this.header = this.wordErrorService.header;
         this.error = this.wordErrorService.error; 
+        if(!this.error) {
+            const defaults = this.wordErrorService.getDefaults();
+            this.error = defaults.error;
+            this.header = defaults.header;
+        }
     }
 
 }

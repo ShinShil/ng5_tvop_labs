@@ -1,70 +1,74 @@
-<div class="header block" *ngIf="header">
-    <div class="col">
-        <div>Название компании</div>
-        <div>Конфидициально</div>
-        <div>Отчёт о проблеме №</div>
-        <div>Программа</div>
-        <div>Выпуск</div>
-        <div>Версия</div>
+<div class="content">
+    <div class="header block" *ngIf="header">
+        <div class="col small">
+            <div *ngIf="header.companyName" class="upper">Название компании</div>
+            <div *ngIf="header.confidence" class="upper">Конфидициально</div>
+            <div *ngIf="header.reportIndex" class="upper">Отчёт о проблеме №</div>
+            <div *ngIf="header.appName" class="upper">Программа</div>
+            <div *ngIf="header.releaseDate" class="upper">Выпуск</div>
+            <div *ngIf="header.releaseVersion" class="upper">Версия</div>
+        </div>
+        <div class="col">
+            <div *ngIf="header.companyName">{{ header.companyName || '' }}</div>
+            <div *ngIf="header.confidence">{{ header.confidence || '' }}</div>
+            <div *ngIf="header.reportIndex">{{ header.reportIndex || '' }}</div>
+            <div *ngIf="header.appName">{{ header.appName || '' }}</div>
+            <div *ngIf="header.releaseDate">{{ header.releaseDate || '' }}</div>
+            <div *ngIf="header.releaseVersion">{{ header.releaseVersion || '' }}</div>
+        </div>
     </div>
-    <div class="col">
-        <div *ngIf="header.companyName">{{ header.companyName }}</div>
-        <div *ngIf="header.confidence">{{ header.confidence }}</div>
-        <div *ngIf="header.reportIndex">{{ header.reportIndex }}</div>
-        <div *ngIf="header.appName">{{ header.appName }}</div>
-        <div *ngIf="header.releaseDate">{{ header.releaseDate }}</div>
-        <div *ngIf="header.releaseVersion">{{ header.releaseVersion }}</div>
+    <div class="report-type block" *ngIf="error.type">
+        <div>Тип отчёта(1-6): {{ error.type }}</div>
+        <div class="col">
+            <div>1 - Ошибка кодирования</div>
+            <div>3 - Предложение</div>
+            <div>5 - Взаимодйствие с аппаратурой</div>
+        </div>
+        <div class="col">
+            <div>2 - Ошибка проектирования</div>
+            <div>4 - расхождение с документацией</div>
+            <div>6 - вопрос</div>
+        </div>
     </div>
-</div>
-<div class="report-type block" *ngIf="error.type">
-    <div>Тип отчёта(1-6): {{ error.type }}</div>
-    <div class="col">
-        <div>1 - Ошибка кодирования</div>
-        <div>3 - Предложение</div>
-        <div>5 - Взаимодйствие с аппаратурой</div>
+    <div class="report-importance block" *ngIf="error.importance">
+        <div>Степень важности: {{ error.importance }}</div>
+        <div>1 - Фaтальная</div>
+        <div>2 - Серьёзная</div>
+        <div>3 - Незначительная</div>
     </div>
-    <div class="col">
-        <div>2 - Ошибка проектирования</div>
-        <div>4 - расхождение с документацией</div>
-        <div>6 - вопрос</div>
+    <div class="attachments block">
+        <span class="upper">Приложения (Д/Н). {{ error.images ? 'Д' : 'Н' }} </span>
+        <img *ngFor="let image of error.images" [src]="image" />
     </div>
-</div>
-<div class="report-importance block" *ngIf="error.importance">
-    <div>Степень важности: {{ error.importance }}</div>
-    <div>1 - Фaтальная</div>
-    <div>2 - Серьёзная</div>
-    <div>3 - Незначительная</div>
-</div>
-<div class="attachments block">
-    <span class="upper">Приложения (Д/Н). {{ error.images ? 'Д' : 'Н' }} </span>
-    <img *ngFor="let image of error.images" [src]="image" />
-</div>
-<div class="problem block">
-    <span class="upper" *ngIf="error.title">Проблема</span>
-    <span>{{ error.title }}</span>
-</div>
-<div class="repeatable block" *ngIf="header && header.repeatable">
-    <span class="upper">Можете ли вы воспроизвести проблемную ситуацию? (Д/Н)</span>
-    <span>{{ header.repeatable ? 'Yes' : 'No'}}</span>
-</div>
-<div class="description block">
-    <span class="upper">Подробное описание проблемы и как её воспроизвести</span>
-    <div class="desc" *ngIf="error.description">
-        <div>Описание проблемы</div>
-        <div class="indent">{{ error.description }}</div>
-        <div>Воспроизведение проблемы</div>
-        <div class="indent">
-            <div class="step" *ngFor="let step of error.steps; let i = index">
-                Шаг {{ i }}. {{ step }}
+    <div class="problem block">
+        <span class="upper" *ngIf="error.title">Проблема</span>
+        <span>{{ error.title }}</span>
+    </div>
+    <div class="repeatable block" *ngIf="header && header.repeatable">
+        <span class="upper">Можете ли вы воспроизвести проблемную ситуацию? (Д/Н)</span>
+        <span>{{ header.repeatable ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="description block">
+        <span class="upper">Подробное описание проблемы и как её воспроизвести</span>
+        <div class="desc" *ngIf="error.description">
+            <div>Описание проблемы</div>
+            <div class="indent">{{ error.description }}</div>
+            <div>Воспроизведение проблемы</div>
+            <div class="indent">
+                <div class="step" *ngFor="let step of error.steps; let i = index">
+                    Шаг {{ i }}. {{ step }}
+                </div>
             </div>
         </div>
     </div>
-    <div class="fix">
+    <div class="fix block">
         <span class="upper">Предлагаемое исправление(Необязательно)</span>
+        <div>{{ error.description }}</div>
     </div>
     <div class="footer block" *ngIf="header">
-        <span class="header">Отчёт предоставлен сотрудником </span>
+        <span class="header upper">Отчёт предоставлен сотрудником </span>
         <span *ngIf="header.workerName">{{ header.workerName }}</span>
-        <span>Дата</span>
+        <span class="upper frm">Дата</span>
         <span *ngIf="header.createdAt">{{ header.createdAt }}</span>
     </div>
+</div>
