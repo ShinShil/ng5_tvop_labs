@@ -20,11 +20,15 @@ import { WordErrorService } from '../word-error/word-error.service';
 export class LabErrorComponent implements OnInit, OnChanges {
     @Input() error: ILabError;
     @Input() display: ILabErrorDisplay;
+    @Input() header: IErrorHeader;
     @Input() titleIndex: number;
 
     constructor(private wordErrorService: WordErrorService) { }
 
-    ngOnInit() { 
+    ngOnInit() {
+        if (this.header) {
+            this.header.reportIndex = this.titleIndex;
+        }
         this.display = clone(this.display);
     }
 
@@ -33,7 +37,7 @@ export class LabErrorComponent implements OnInit, OnChanges {
     }
 
     public typeof(val) {
-        return typeof(val);
+        return typeof (val);
     }
 
 

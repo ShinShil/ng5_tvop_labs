@@ -61,9 +61,9 @@
             </div>
         </div>
     </div>
-    <div class="fix block">
+    <div class="fix block" *ngIf="error.fix">
         <span class="upper">Предлагаемое исправление(Необязательно)</span>
-        <div>{{ error.description }}</div>
+        <div>{{ error.fix }}</div>
     </div>
     <div class="footer block" *ngIf="header">
         <span class="header upper">Отчёт предоставлен сотрудником </span>

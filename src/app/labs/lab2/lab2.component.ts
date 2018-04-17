@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { clone } from 'lodash';
 
 import { LabErrorDisplayService } from '../shared/error-display/lab-error-display.service';
-import { CHECKMATES } from './chess4.constant';
+import { CHECKMATES } from './checkmates.constant';
 import { SUPER_COW } from './super_cow.constant';
 import { CHESS3 } from './chess3.constant';
 import { CALC } from './calc.constant';

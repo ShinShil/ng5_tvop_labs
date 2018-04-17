@@ -3,7 +3,7 @@
         <span>
             <span *ngIf="titleIndex">{{titleIndex}}. </span>
             <span>{{error.title}}</span>
-            <button mat-button mat-raised-button color="primary" (click)="goToReport(null, error)">Report</button>
+            <button mat-button mat-raised-button color="primary" (click)="goToReport(header, error)">Report</button>
         </span>
         <lab-error-display [(ngModel)]="display"></lab-error-display>
     </h3>

@@ -13,6 +13,10 @@ export class WordErrorService {
     public navigateToError(header: IErrorHeader, error: ILabError): void {
         this.error = error;
         this.header = header;
+        console.log({
+            header,
+            error
+        });
         if(!this.error || !this.header) {
             const defaults = this.getDefaults();
             this.error = defaults.error;
