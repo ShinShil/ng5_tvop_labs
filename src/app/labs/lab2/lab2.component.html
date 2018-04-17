@@ -1,12 +1,11 @@
-
 <div style="padding: 24px 24px 0 24px">
-    <mat-radio-group [(ngModel)]="errors" fxLayoutGap="15px">
+    <mat-radio-group [(ngModel)]="appErrorsDescriptor" fxLayoutGap="15px">
         <mat-radio-button *ngFor="let app of applications"
             [value]="app.value">
             {{ app.displayValue }}
         </mat-radio-button>
     </mat-radio-group>
 </div>
-<div *ngFor="let error of errors; let i = index">
-    <lab-error [error]="error" [display]="display" [titleIndex]="i+1"></lab-error>
+<div *ngFor="let error of appErrorsDescriptor.errors; let i = index">
+    <lab-error [error]="error" [header]="appErrorsDescriptor.header" [display]="display" [titleIndex]="i+1"></lab-error>
 </div>

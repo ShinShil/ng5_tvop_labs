@@ -79,9 +79,9 @@ export class Lab1Component {
             releaseVersion,
             appName,
             confidence: '',
-            createdAt: '17/04/2-18',
+            createdAt: '17/04/2018',
             workerName: 'Старостин Никита',
-            companyName: 'Стростин Никита, гр. 551004',
+            companyName: 'Старостин Никита, гр. 551004',
             reportIndex: 0
         }
     }

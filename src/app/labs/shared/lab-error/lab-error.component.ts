@@ -26,9 +26,6 @@ export class LabErrorComponent implements OnInit, OnChanges {
     constructor(private wordErrorService: WordErrorService) { }
 
     ngOnInit() {
-        if (this.header) {
-            this.header.reportIndex = this.titleIndex;
-        }
         this.display = clone(this.display);
     }
 
@@ -41,7 +38,10 @@ export class LabErrorComponent implements OnInit, OnChanges {
     }
 
 
-    public goToReport(header: IErrorHeader, error: ILabError) {
+    public goToReport(header: IErrorHeader, error: ILabError, titleIndex?: number) {
+        if(titleIndex) {
+            header.reportIndex = titleIndex;
+        }
         this.wordErrorService.navigateToError(header, error);
     }
 }

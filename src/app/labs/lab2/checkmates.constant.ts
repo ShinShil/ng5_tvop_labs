@@ -1,6 +1,6 @@
 import { ERROR_TYPE, IMPORTANCE_TYPE } from '../../app.constant';
 
-const getImage = (image: string) => `assets/img/checkmates/${image}/.png`;
+const getImage = (image: string) => `assets/img/checkmates_${image}.png`;
 const startProgramm = 'Запустите программу';
 export const CHECKMATES: ILabError[] = [
     {
