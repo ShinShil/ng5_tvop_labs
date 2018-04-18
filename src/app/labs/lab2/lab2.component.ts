@@ -70,7 +70,7 @@ export class Lab2Component {
         (this.applications[1] as any).value.header = this.getDefaultHeader('SuperCow', '1.6', '03/08/2007');
         (this.applications[2] as any).value.header = this.getDefaultHeader('ShashkiRozum', '1.0', '05/04/2014');
         (this.applications[3] as any).value.header = this.getDefaultHeader('Calc', '1.0', '09/04/2007');
-        (this.applications[4] as any).value.header = this.getDefaultHeader('Pyatnashki', '1.0', '05/07/2016');
+        (this.applications[4] as any).value.header = this.getDefaultHeader('Pyatnashki', '2.0', '05/07/2016');
     }
 
     private getDefaultHeader(appName: string, releaseVersion: string, releaseDate: string): IErrorHeader {
