@@ -1,7 +1,7 @@
 import { ERROR_TYPE, IMPORTANCE_TYPE } from '../../app.constant';
 import { forEach } from 'lodash';
 
-const getImage = (image: string) => `assets/img/cacl_${image}.png`;
+const getImage = (image: string) => `assets/img/calc_${image}.png`;
 const startProgramm = 'Запустите программу';
 const getMenuPath = (path: string[]): string => {
     let selectMenu = '';
