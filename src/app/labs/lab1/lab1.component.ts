@@ -6,6 +6,7 @@ import { CUBE_ERRORS } from './cube.constant';
 import { CHESS1_ERRORS } from './chess1.constant';
 import { CHESS2_ERRORS } from './chess2.constant';
 import { TETRIS } from './tetris.constat';
+import { SAPER } from './saper.constant';
 
 @Component({
     selector: 'lab1',
@@ -53,7 +54,15 @@ export class Lab1Component {
                 errors: TETRIS,
                 header: null
             }
-        }];
+        },
+        {
+            displayValue: 'Saper',
+            value: {
+                errors: SAPER,
+                header: null
+            }
+        }
+    ];
 
     constructor(private displayService: LabErrorDisplayService) {
         this.appErrorsDescriptor = this.applications[0].value;
