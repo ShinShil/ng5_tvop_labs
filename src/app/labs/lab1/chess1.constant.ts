@@ -1,4 +1,5 @@
 import { forEach } from 'lodash';
+import { IMPORTANCE_TYPE, ERROR_TYPE } from '../../app.constant';
 
 const errorType = {
     CODING: 1,
@@ -13,7 +14,7 @@ const errorFatality = {
     SERIOUS: 2,
     SMALL: 3
 }
-const startProgamm = 'Запустите программу';
+const startProgamm = 'Запустить программу';
 const getMenuPath = (path: string[]): string => {
     let selectMenu = '';
     forEach(path, (p, index) => {
@@ -26,12 +27,12 @@ const getMenuPath = (path: string[]): string => {
     return selectMenu;
 }
 const selectMenu = (path: string[]): string => {
-    return `Выберите пункт меню: ${getMenuPath(path)}`;
+    return `Выбрать пункт меню: ${getMenuPath(path)}`;
 }
 export const CHESS1_ERRORS: ILabError[] = [
     {
-        title: 'Непонятное поведение текста пункта меню - текст всё время меняется и не ясно, что он делает',
-        description: 'Не понятна задача пунктов меню Options->"Black Side"/"White Side"/"Black Side on the bottom", кроме того на пункт меню Options->"Black Side on the bottom", можно нажать только 1 раз, а на остальные пункты, приведённые в данном описании, сколько угодно',
+        title: 'Непонятное поведение текста пункта меню - текст меняется после первого нажатия и не ясно, что он делает',
+        description: 'Не понятна задача пунктов меню Options->"Black Side"/"White Side"/"Black Side on the bottom", при нажатии на эти пункты происходит смена стороно шашек, по не известной причиние первоночальный пункт меню Black side on the bottom меняется на black side.',
         steps: [
             startProgamm,
             selectMenu(['options', 'Black side to the bottom']),
@@ -46,21 +47,25 @@ export const CHESS1_ERRORS: ILabError[] = [
             'assets/img/chess1_1_2.png',
             'assets/img/chess1_1_3.png',
             'assets/img/chess1_1_4.png',
-        ]
+        ],
+        fix: 'После запуска игры задать начальный текст "black side" вместо "black side on the botton"',
+        importance: IMPORTANCE_TYPE.MINOR,
+        repeatable: true,
+        type: ERROR_TYPE.CODING
     },
     {
         title: 'Некорректно работает передача управления с игрока на компьютер',
-        description: 'При переклюении с человека на компьютер, компьютер сразу не принимает управление, компьютер принимает управление только на следуюший ход.',
+        description: 'При переключении с человека на компьютер, компьютер принимает управление только на следуюший ход.',
         steps: [
             startProgamm,
             selectMenu(['options', 'players', 'bottom', 'computer']),
-            'Ожидайте несколько секунд',
+            'Ожидать несколько секунд',
             'Компьютер не принял на себя управление',
-            'Нажмите мышкой на вторую шашку слева в третьем снизу ряду',
+            'Нажать мышкой на вторую шашку слева в третьем снизу ряду',
             'На шашке появился кружок, который говорит о том, что шашка выделена',
-            'Нажмите мышкой на синюю клеточку - 2-я слева в 4-м снизу ряду',
+            'Нажать мышкой на синюю клеточку - 2-я слева в 4-м снизу ряду',
             'На клеточке появилась галочка',
-            'Нажмите мышкой на клеточку, в которой появилась галочка',
+            'Нажать мышкой на клеточку, в которой появилась галочка',
             'Выделенная шашка переместится на место галочки, галочка пропадёт',
             'Компьютер походит за чёрных',
             'Компьютер походит за белых',
@@ -69,11 +74,15 @@ export const CHESS1_ERRORS: ILabError[] = [
         images: [
             'assets/img/chess1_2_1.png',
             'assets/img/chess1_2_2.png'
-        ]
+        ],
+        fix: 'Передавать управление сразу после выбора пункта меню',
+        importance: IMPORTANCE_TYPE.MINOR,
+        repeatable: true,
+        type: ERROR_TYPE.CODING
     },
     {
-        title: 'Игрок который ходит вторым, может отменить первый ход первого игрока',
-        description: 'Если игрок ходит вторым, то он может через пункт меню "Game"->"Back One Move" отменить ход первого игрока',
+        title: 'При отмене первого хода, управление остаётся у второго игрока',
+        description: 'При отмене первого хода, управление остаётся у второго игрока',
         steps: [
             startProgamm,
             selectMenu(['options', 'Black side to the bottom']),
@@ -85,19 +94,32 @@ export const CHESS1_ERRORS: ILabError[] = [
         ],
         images: [
             'assets/img/chess1_3_1.png'
-        ]
+        ],
+        fix: 'Заблокировать пункт меню отмена хода для игрока, если он ещё не ходил',
+        importance: IMPORTANCE_TYPE.SERIOUS,
+        repeatable: true,
+        type: ERROR_TYPE.CODING
     },
     {
-        title: 'Пункт меню всегда заблокирован',
-        description: 'Пункт меню "Game"->"Stop" всегда заблокирован',
+        title: 'Пункт меню заблокирован',
+        description: 'Пункт меню "Game"->"Stop" заблокирован при игре: человек против человека, человек против компьютера, компютер против компьютера',
         steps: [
             startProgamm,
-            'Совершите любые действия, кроме закрытия программы',
-            'Пункт меню "Game"->"Stop" заблокирован'
+            'Пункт меню "Game"->"Stop" заблокирован',
+            selectMenu(['Options', 'Players', 'Top', 'Human']),
+            'Пункт меню "Game"->"Stop" заблокирован',
+            selectMenu(['Options', 'Players', 'Top', 'Computer']),
+            'Пункт меню "Game"->"Stop" заблокирован',
+            selectMenu(['Options', 'Players', 'Bottom', 'Computer']),
+            'Пункт меню "Game"->"Stop" заблокирован',
         ],
         images: [
             'assets/img/chess1_4_1.png'
-        ]
+        ],
+        fix: 'Разблокировать пункт меню при игре компьютер проти компьютера',
+        importance: IMPORTANCE_TYPE.SERIOUS,
+        repeatable: true,
+        type: ERROR_TYPE.CODING
     },
     {
         title: 'Непонятный процент в левом нижнем углу',
@@ -108,7 +130,11 @@ export const CHESS1_ERRORS: ILabError[] = [
         ],
         images: [
             'assets/img/chess1_5_1.png'
-        ]
+        ],
+        fix: 'Добавить подпись поясняющую, назначение процентов',
+        importance: IMPORTANCE_TYPE.MINOR,
+        repeatable: true,
+        type: ERROR_TYPE.PROPOSAL
     },
     {
         title: 'Нельзя выбрать другую шашку, пока не снимешь выделение с текущей',
@@ -116,17 +142,21 @@ export const CHESS1_ERRORS: ILabError[] = [
         steps: [
             startProgamm,
             'Щёлкните правой кнопкой мыши по белой шашке второй справа в третьем снизу ряду',
-            'Вторая спарава белая шашка в третьем снизу ряду приобрела выделенное состояние',
-            'Щёлкните правой кнопкой мыши по белой шашке третьей справа в третьем снизу ряду',
+            'Вторая справа белая шашка в третьем снизу ряду приобрела выделенное состояние',
+            'Щёлкнуть правой кнопкой мыши по белой шашке третьей справа в третьем снизу ряду',
             'Шашка не выделилась'
         ],
         images: [
             'assets/img/chess1_6_1.png'
-        ]
+        ],
+        fix: 'Автоматически скидывать выделение с активной шашки при щелчке по другой доступной для хода шашке',
+        importance: IMPORTANCE_TYPE.SERIOUS,
+        repeatable: true,
+        type: ERROR_TYPE.PROPOSAL
     },
     {
-        title: 'В editor panel есть непонятные радио кнопки',
-        description: 'В программе присутствует editor panel. В editor panel есть непонятные радиокнопки.',
+        title: 'У радио кнопок в editor panel нету подписей',
+        description: 'В программе присутствует editor panel. В editor panel радио кнопки без подписей.',
         steps: [
             startProgamm,
             selectMenu(['Options', 'Editor panel']),
@@ -139,7 +169,7 @@ export const CHESS1_ERRORS: ILabError[] = [
     },
     {
         title: 'Не подписаны клетки шахматной доски',
-        description: 'В приложении используются классическая шахматная доска, однако клетки не подписаны, из-за его сложно описать ситуацию на столе',
+        description: 'В приложении используются доска, клетки не подписаны',
         steps: [
             startProgamm
         ],
@@ -188,7 +218,7 @@ export const CHESS1_ERRORS: ILabError[] = [
         ]
     },
     {
-        title: 'Ссылка ведущая на поламанную страницу в диалоге "About"',
+        title: 'Ссылка ведущая на поломанную страницу в диалоге "About"',
         description: 'В диалоге "About..." есть ccылка, которая ведёт на поломанную страницу',
         steps: [
             'Если на компьютере нету браузера, то установите его на свой компьютер',
@@ -206,7 +236,7 @@ export const CHESS1_ERRORS: ILabError[] = [
     },
     {
         title: 'Не очевидность управления',
-        description: 'Интерфейс игры может быть сложен для неподготоваленного пользователя, чтобы разобраться с приложением необходимо прочитать help, следует при запуске программы указывать на него',
+        description: 'Интерфейс игры может быть сложен для неподготовленного пользователя: после  запуска игры непонятно игра началась или нет, чья очередь ходить, как снимать выделение с шашек',
         steps: [
             startProgamm,
         ],

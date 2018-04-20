@@ -2,7 +2,7 @@ import { ERROR_TYPE, IMPORTANCE_TYPE } from '../../app.constant';
 import { forEach } from 'lodash';
 
 const getImage = (image: string) => `assets/img/calc_${image}.png`;
-const startProgramm = 'Запустите программу';
+const startProgramm = 'Запустить программу';
 const getMenuPath = (path: string[]): string => {
     let selectMenu = '';
     forEach(path, (p, index) => {
@@ -16,7 +16,7 @@ const getMenuPath = (path: string[]): string => {
 };
 
 const selectMenu = (path: string[]): string => {
-    return `Выберите пункт меню: ${getMenuPath(path)}`;
+    return `Выбрать пункт меню: ${getMenuPath(path)}`;
 };
 
 export const CALC: ILabError[] = [
@@ -25,7 +25,7 @@ export const CALC: ILabError[] = [
         description: 'При нажатии мышкой в область окна приложения мимо контрола winapi, происходит вылет из приложения',
         steps: [
             startProgramm,
-            'Нажмите мышкой в область окна приложения, которая не является кнтролом winapi и не является строкой меню'
+            'Нажать мышкой в область окна приложения, которая не является кнтролом winapi и не является строкой меню'
         ],
         images: [
             getImage('1_1')
@@ -70,7 +70,7 @@ export const CALC: ILabError[] = [
         description: 'В приложении есть возможность вводить числа с помощью кнопок, есть кнопка 0 с точкой, но она не проставляет точку, если на неё нажать',
         steps: [
             startProgramm,
-            'Нажмите на кнопку 0',
+            'Нажать на кнопку 0',
             'Точка не появилась'
         ],
         images: [
@@ -86,10 +86,10 @@ export const CALC: ILabError[] = [
         description: 'Программа вылетает если при нажатии на кнопку с цифрой, количество цифр превышает длину поля для ввода',
         steps: [
             startProgramm,
-            'Введите в текстовое поле "11111111111111111111111111111"',
-            'Нажмите на кнопку "1"',
+            'Ввести в текстовое поле "11111111111111111111111111111"',
+            'Нажать на кнопку "1"',
             'Появился диалог с ошибкой',
-            'Нажмите ок',
+            'Нажать ок',
             'Программа завершилась'
         ],
         images: [
@@ -136,8 +136,8 @@ export const CALC: ILabError[] = [
         description: 'Программа запрещает вводить операцию равно, если не было выбрано ни одно из действий, при этом она считает результат',
         steps: [
             startProgramm,
-            'Нажмите на кнопку "2"',
-            'Нажмите на кнопку "="',
+            'Нажать на кнопку "2"',
+            'Нажать на кнопку "="',
             'Появился диалог об ошибке',
             'Закройте диалог',
             'В текстовом поле видно: "В результате получилось: 2"'

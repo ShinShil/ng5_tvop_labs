@@ -56,10 +56,7 @@ export class Lab1Component {
         }];
 
     constructor(private displayService: LabErrorDisplayService) {
-        this.appErrorsDescriptor = {
-            errors: ADDER_ERRORS,
-            header: null
-        };
+        this.appErrorsDescriptor = this.applications[0].value;
         this.addHeaderes();
         this.display = displayService.getDefaultDisplay();
         this.displayService.changeDisplayValue.subscribe((value) => {

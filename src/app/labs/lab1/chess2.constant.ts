@@ -1,6 +1,7 @@
 import { forEach } from 'lodash';
+import { IMPORTANCE_TYPE, ERROR_TYPE } from '../../app.constant';
 
-const startProgamm = 'Запустите программу';
+const startProgamm = 'Запустить программу';
 const getImage = (image: string) => `assets/img/${image}`;
 const getMenuPath = (path: string[]): string => {
     let selectMenu = '';
@@ -14,17 +15,17 @@ const getMenuPath = (path: string[]): string => {
     return selectMenu;
 }
 const selectMenu = (path: string[]): string => {
-    return `Выберите пункт меню: ${getMenuPath(path)}`;
+    return `Выбрать пункт меню: ${getMenuPath(path)}`;
 }
-const pressButton = (buttonTitle: string): string => `Нажмите на кнопку в диалоге "${buttonTitle}"`;
-const pressField = (fieldCoords: string): string => `Нажмите правой кнопкой мыши в игровом поле на клетку ${fieldCoords}`
+const pressButton = (buttonTitle: string): string => `Нажать на кнопку в диалоге "${buttonTitle}"`;
+const pressField = (fieldCoords: string): string => `Нажать правой кнопкой мыши в игровом поле на клетку ${fieldCoords}`
 export const CHESS2_ERRORS: ILabError[] = [
     {
         title: 'На максимальном уровне зависает компьютер',
-        description: 'Если выставить уровень на 32, то во время своего хода компьютер зависает',
+        description: 'Если выставить уровень на 32, то во время своего хода компьютер бездействует на протяжении 2 минут 36 секунд',
         steps: [
             startProgamm,
-            'Нажмите на стрелоку вверх возле слова Уровень 28 раз',
+            'Нажать на стрелочку вверх возле слова Уровень 28 раз',
             pressField('с-3'),
             pressField('d-4'),
             'Наступил ход компьютера',
@@ -32,11 +33,14 @@ export const CHESS2_ERRORS: ILabError[] = [
         ],
         images: [
             getImage('chess2_1_1.png')
-        ]
+        ],
+        importance: IMPORTANCE_TYPE.SERIOUS,
+        repeatable: true,
+        type: ERROR_TYPE.PROPOSAL
     },
     {
-        title: 'В диалоге "Расстановка" отсутствует кнопка закрыть',
-        description: 'Ожидается, что любой диалог можно закрыть, однако в диалоге "Расстановка" отсутствует такая кнопка',
+        title: 'В диалоге "Расстановка" отсутствует кнопка "Закрыть", есть только кнопка "Начать"',
+        description: 'Ожидается, что любой диалог можно закрыть через кнопку "Закрыть", однако в диалоге "Расстановка" отсутствует такая кнопка, можно закрыть диалог только нажав на кнопку "Начать"',
         steps: [
             startProgamm,
             selectMenu(['Игра', 'Расстановка']),
@@ -45,11 +49,15 @@ export const CHESS2_ERRORS: ILabError[] = [
         ],
         images: [
             getImage('chess2_2_1.png')
-        ]
+        ],
+        fix: 'Добавить кнопку "Закрыть"',
+        importance: IMPORTANCE_TYPE.SERIOUS,
+        repeatable: true,
+        type: ERROR_TYPE.PROJECTING
     },
     {
         title: 'На русском языке ошибка в правописании пункта меню "Новыя игра"',
-        description: 'ПО правилам русского языка новая игра пишется так: "новая игра", в приложении на русском языке пункт меню называет "новыя игра"',
+        description: 'По правилам русского языка новая игра пишется так: "новая игра", в приложении на русском языке пункт меню называется "Новыя игра"',
         steps: [
             startProgamm,
             selectMenu(['Язык', 'Русский']),
@@ -57,7 +65,11 @@ export const CHESS2_ERRORS: ILabError[] = [
         ],
         images: [
             getImage('chess2_3_1.png')
-        ]
+        ],
+        fix: 'Изменить написание пукта меню "Новыя игра" на "Новая игра"',
+        importance: IMPORTANCE_TYPE.MINOR,
+        repeatable: true,
+        type: ERROR_TYPE.CODING
     },
     {
         title: 'Отсутствует перевод кнопки "New" на русский язык',
@@ -68,11 +80,15 @@ export const CHESS2_ERRORS: ILabError[] = [
         ],
         images: [
             getImage('chess2_4_1.png')
-        ]
+        ],
+        fix: 'Добавить перевод кнопки "New" на русский язык',
+        importance: IMPORTANCE_TYPE.MINOR,
+        repeatable: true,
+        type: ERROR_TYPE.CODING
     },
     {
-        title: 'Пункт меню подсказка делает ход',
-        description: 'При выборе пункта меню подсказка, ожидается получиться подсказку, вместо этого компьютер делает ход за игрока',
+        title: 'Пункт меню подсказка делает ход, вместо подсказки',
+        description: 'При выборе пункта меню подсказка, ожидается получить подсказку, вместо этого компьютер делает ход за игрока',
         steps: [
             startProgamm,
             selectMenu(['Игра', 'Подсказка']),
@@ -80,7 +96,11 @@ export const CHESS2_ERRORS: ILabError[] = [
         ],
         images: [
             getImage('chess2_5_1.png')
-        ]
+        ],
+        fix: 'Показывать подсказку',
+        importance: IMPORTANCE_TYPE.SERIOUS,
+        repeatable: true,
+        type: ERROR_TYPE.PROPOSAL
     },
     {
         title: 'Кнопка ведущая на несущуствующий сайт',
@@ -89,7 +109,7 @@ export const CHESS2_ERRORS: ILabError[] = [
             'Если на компьютере, с которого будет запускаться приложение chess2, отсутствует браузер, то установите любой браузер',
             startProgamm,
             selectMenu(['О программе...']),
-            'Нажмите на кнопку с изображение спутниковой тарелки',
+            'Нажать на кнопку с изображение спутниковой тарелки',
             'Откроется браузер',
             'Выполнится переход на адрес http://www.chsv-soft.narod.ru/',
             'Такого адреса не существует'
@@ -127,8 +147,8 @@ export const CHESS2_ERRORS: ILabError[] = [
         ]
     },
     {
-        title: 'Диалог "Расстановка" очень маленький',
-        description: 'После нажатия пункта меню "Расстановка" открывается диалог "Расстановка", который настолько маленький, что в нём не видно кнопку "Начать", которая закрывает этот диалог',
+        title: 'Кнопка "Начать" не помещается на рабочей области диалога "Расстановка"',
+        description: 'После нажатия пункта меню "Расстановка" открывается диалог "Расстановка", в нём не видно кнопку "Начать", которая закрывает этот диалог',
         steps: [
             startProgamm,
             selectMenu(['Игра', 'Расстановка']),
