@@ -209,7 +209,7 @@ export const CHESS1_ERRORS: ILabError[] = [
             startProgamm,
             selectMenu(['Help', 'About']),
             'Появится диалог "About..."',
-            'Нажмите любое количество раз меньшее 10 на кнопку "History"',
+            'Нажать любое количество раз меньшее 10 на кнопку "History"',
             'Ничего не происходит'
         ],
         images: [
@@ -225,7 +225,7 @@ export const CHESS1_ERRORS: ILabError[] = [
             startProgamm,
             selectMenu(['Help', 'About']),
             'Появится диалог "About..."',
-            'Нажмите на ссылку HomePage : shra.web.ur.ru',
+            'Нажать на ссылку HomePage : shra.web.ur.ru',
             'В браузере откроется страница с адресом http://shra.web.ur.ru/',
             'На странице выведены символы'
         ],

@@ -4,7 +4,7 @@ const startProgramm: string[] = [
 ];
 const enter = (input): string[] => [
     `Введите ${input}`,
-    `Нажмите enter`
+    `Нажать enter`
 ];
 
 const out = (result): string => `Программа выводит: ${result}`;
@@ -23,7 +23,7 @@ const uiSteps: string[] = [
 ];
 
 const programEndWorking = 'Программа завершает свою работу';
-const pressAnyKey = 'Нажмите любую клавишу';
+const pressAnyKey = 'Нажать любую клавишу';
 
 export const ADDER_ERRORS: ILabError[] = [
     {
