@@ -7,6 +7,7 @@ import { SUPER_COW } from './super_cow.constant';
 import { CHESS3 } from './chess3.constant';
 import { CALC } from './calc.constant';
 import { PYATNASHKI } from './pyatnashki.constant';
+import { THOUSAND } from './thousand.constant';
 
 @Component({
     selector: 'lab2',
@@ -54,6 +55,13 @@ export class Lab2Component {
                 errors: PYATNASHKI,
                 header: null
             }
+        },
+        {
+            displayValue: '1000',
+            value: {
+                errors: THOUSAND,
+                header: null
+            }
         }];
 
     constructor(private displayService: LabErrorDisplayService) {
@@ -71,6 +79,7 @@ export class Lab2Component {
         (this.applications[2] as any).value.header = this.getDefaultHeader('ShashkiRozum', '1.0', '05/04/2014');
         (this.applications[3] as any).value.header = this.getDefaultHeader('Calc', '1.0', '09/04/2007');
         (this.applications[4] as any).value.header = this.getDefaultHeader('Pyatnashki', '2.0', '05/07/2016');
+        (this.applications[5] as any).value.header = this.getDefaultHeader('1000', '2.0', '05/07/2016');
     }
 
     private getDefaultHeader(appName: string, releaseVersion: string, releaseDate: string): IErrorHeader {

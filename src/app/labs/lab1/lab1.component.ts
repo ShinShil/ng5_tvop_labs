@@ -77,6 +77,7 @@ export class Lab1Component {
         (this.applications[2] as any).value.header = this.getDefaultHeader('Draughts', '1.6', '01/09/2002');
         (this.applications[3] as any).value.header = this.getDefaultHeader('Checkers', '1.2.0.1', '09/04/2007');
         (this.applications[4] as any).value.header = this.getDefaultHeader('MegaTetris', '1.0', '05/07/2016');
+        (this.applications[5] as any).value.header = this.getDefaultHeader('Spaer', '1.0', '05/07/2016');
     }
 
     private getDefaultHeader(appName: string, releaseVersion: string, releaseDate: string): IErrorHeader {

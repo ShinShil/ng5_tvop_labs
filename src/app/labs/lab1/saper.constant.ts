@@ -1,9 +1,8 @@
-
 import { forEach } from 'lodash';
 import { IMPORTANCE_TYPE, ERROR_TYPE } from '../../app.constant';
 
 const startProgramm = ['Запустить программу', 'Появится диалог с предупреждением', 'Нажмите ок'];
-const getImage = (image: string) => `assets/img/saper_${image}`;
+const getImage = (image: string) => `assets/img/saper_${image}.png`;
 const getMenuPath = (path: string[]): string => {
     let selectMenu = '';
     forEach(path, (p, index) => {
