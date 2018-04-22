@@ -25,3 +25,20 @@ interface IErrorHeader {
     workerName: string;
     createdAt: string;
 }
+
+interface ITriangle {
+    a: number;
+    b: number;
+    c: number;
+}
+
+
+interface IPoint {
+    x: number;
+    y: number;
+}
+
+interface ICircle {
+    radius: number;
+    center: IPoint;
+}
