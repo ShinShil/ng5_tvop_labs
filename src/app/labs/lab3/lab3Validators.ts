@@ -25,7 +25,7 @@ export const numberInputValidator = (formControl: FormControl): ValidationErrors
     } else if (value != null) {
         errorsConfigs = [
             {
-                isError: value.indexOf('i') === value.lastIndexOf('i') && value.lastIndexOf(',') !== -1,
+                isError: value.indexOf('i') === value.lastIndexOf('i') && value.lastIndexOf('i') !== -1,
                 errorMessage: Lab3Strings.ErrorNumberComplex
             },
             {
