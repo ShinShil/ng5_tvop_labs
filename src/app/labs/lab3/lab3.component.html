@@ -1,18 +1,35 @@
-<form [formGroup]="form">
-    <mat-form-field>
-        <input matInput formControlName="a" type="text" placeholder="A">
-        <mat-error *ngIf="form.get('a').errors">{{ form.get('a').errors[getKeys(form.get('a').errors)[0]] }}</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput formControlName="b" type="text" placeholder="B">
-        <mat-error *ngIf="form.get('b').errors">{{ form.get('b').errors[getKeys(form.get('b').errors)[0]] }}</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput formControlName="c" type="text" placeholder="C">
-        <mat-error *ngIf="form.get('c').errors">{{ form.get('c').errors[getKeys(form.get('c').errors)[0]] }}</mat-error>
-    </mat-form-field>
-    <label *ngIf="triangleModel">{{triangleModel.type}}</label>
-</form>
-<canvas id="canvas" #canvas>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Triangle
+        </mat-card-title>
+        <mat-card-subtitle>
+            Define the type of triangle and draw it
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field>
+                <input matInput formControlName="a" type="text" placeholder="Enter side A">
+                <mat-error *ngIf="form.get('a').errors">{{ form.get('a').errors[getKeys(form.get('a').errors)[0]] }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="b" type="text" placeholder="Enter side B">
+                <mat-error *ngIf="form.get('b').errors">{{ form.get('b').errors[getKeys(form.get('b').errors)[0]] }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="c" type="text" placeholder="Enter side C">
+                <mat-error *ngIf="form.get('c').errors">{{ form.get('c').errors[getKeys(form.get('c').errors)[0]] }}</mat-error>
+            </mat-form-field>
+        </form>
+        <div class="canvas-wrapper">
+            <label *ngIf="triangleModel; else enterThreeSides">{{triangleModel.type}}</label>
+            <ng-template #enterThreeSides>
+                <label>You should enter three valid sides: A, B and C</label>
+            </ng-template>
+            <canvas id="canvas" #canvas>
 
-</canvas>
+            </canvas>
+        </div>
+    </mat-card-content>
+</mat-card>

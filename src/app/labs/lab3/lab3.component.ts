@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { TriangleClass } from './triangle.class';
 import { Form, FormBuilder, FormGroup, ValidationErrors, FormControl } from '@angular/forms';
 import { Lab3Strings } from './lab3.strings.constant';
 import { find, max } from 'lodash';
 import { numberInputValidator } from './lab3Validators';
+import { LabErrorDisplayService } from '../shared/error-display/lab-error-display.service';
 
 @Component({
     selector: 'lab3',
@@ -12,7 +13,7 @@ import { numberInputValidator } from './lab3Validators';
         'lab3.component.scss'
     ]
 })
-export class Lab3Component implements OnInit {
+export class Lab3Component implements OnInit, OnDestroy {
     public triangleModel: TriangleClass;
     public form: FormGroup;
     @ViewChild('canvas') public canvasElRef: ElementRef;
@@ -22,11 +23,13 @@ export class Lab3Component implements OnInit {
     private get canvasContext(): CanvasRenderingContext2D {
         return this.canvas.getContext('2d');
     }
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder,
+    private labErrorDisplayService: LabErrorDisplayService) {
 
     }
 
     ngOnInit() {
+        setTimeout(this.labErrorDisplayService.changeDisplayValue.emit(null), 100);
         this.form = this.formBuilder.group({
             a: [null, numberInputValidator],
             b: [null, numberInputValidator],
@@ -51,8 +54,12 @@ export class Lab3Component implements OnInit {
                 this.clearCanvas();
             }
         });
-        this.canvas.width = 500;
-        this.canvas.height = 400;
+        this.canvas.width = 400;
+        this.canvas.height = 300;
+    }
+
+    ngOnDestroy() {
+        this.labErrorDisplayService.changeDisplayValue.emit(this.labErrorDisplayService.getDefaultDisplay());
     }
 
     public drawTriangle(): void {
@@ -65,7 +72,7 @@ export class Lab3Component implements OnInit {
                 break;
             }
         }
-        const firstLineLength = 400;
+        const firstLineLength = 300;
         const koeff = firstLineLength / longest;
         const firstLineX1 = this.canvas.width / 2 - firstLineLength / 2;
         const firstLineX2 = this.canvas.width / 2 + firstLineLength / 2;

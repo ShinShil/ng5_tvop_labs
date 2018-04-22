@@ -5,6 +5,6 @@
         <a routerLink="lab2" mat-button color="secondary">Lab 2</a>
         <a routerLink="lab3" mat-button color="secondary">Lab 3</a>
     </div>
-    <lab-error-display [(ngModel)]="display" (click)="updateDisplay()"></lab-error-display>
+    <lab-error-display *ngIf="display" [(ngModel)]="display" (click)="updateDisplay()"></lab-error-display>
 </mat-toolbar>
 <router-outlet></router-outlet>

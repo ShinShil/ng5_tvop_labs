@@ -7,7 +7,7 @@ export const numberInputValidator = (formControl: FormControl): ValidationErrors
     let value: string = formControl.value;
     const num = Number(value);
     let errorsConfigs = [];
-    if (num != null && !isNaN(num) && value != null) {
+    if (num != null && !isNaN(num) && value) {
         errorsConfigs = [
             {
                 isError: isFloat(num),
@@ -22,7 +22,7 @@ export const numberInputValidator = (formControl: FormControl): ValidationErrors
                 errorMessage: Lab3Strings.ErrorNumberTooBig
             }
         ];
-    } else if (value != null) {
+    } else if (value) {
         errorsConfigs = [
             {
                 isError: value.indexOf('i') === value.lastIndexOf('i') && value.lastIndexOf('i') !== -1,
