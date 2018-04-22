@@ -38,7 +38,7 @@ const equalateral = [
         b: 15,
         c: 15
     })
-]
+];
 
 const versatile = [
     new TriangleClass({
@@ -56,7 +56,26 @@ const versatile = [
         b: 3,
         c: 4
     })
-]
+];
+
+const invalidTriangle = [
+    new TriangleClass({
+        a: 1,
+        b: 2,
+        c: 3
+    }),
+    new TriangleClass({
+        a: 1,
+        b: 999999999,
+        c: 1
+    }),
+    new TriangleClass({
+        a: 15,
+        b: 50,
+        c: 15
+    })
+];
+
 describe('Get triangle type', () => {
     forEach(isocleless, triangle => {
         it(`Isocleless triangle: ${triangle.a}, ${triangle.b} ${triangle.c}`, () => {
@@ -73,9 +92,14 @@ describe('Get triangle type', () => {
             expect(triangle.isVersatile).toBeTruthy();
         });
     });
+    forEach(invalidTriangle, triangle => {
+        it(`Invalid triangle: ${triangle.a}, ${triangle.b} ${triangle.c}`, () => {
+            expect(triangle.isValid).toBeFalsy();
+        });
+    });
 });
 
-const required = [null, undefined];
+const required = [null, undefined, ''];
 const invalid = ['qer', 'sss'];
 const complex = ['21i'];
 const negative = ['-21'];
